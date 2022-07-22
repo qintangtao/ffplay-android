@@ -10,8 +10,6 @@ extern "C" {
 
 typedef Uint16 SDL_AudioFormat;
 
-
-
 #define SDL_AUDIO_MASK_BITSIZE       (0xFF)
 #define SDL_AUDIO_MASK_DATATYPE      (1<<8)
 #define SDL_AUDIO_MASK_ENDIAN        (1<<12)

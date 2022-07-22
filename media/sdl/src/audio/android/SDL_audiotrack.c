@@ -199,8 +199,6 @@ void AudioTrack_WriteByteBuffer(SDL_Android_AudioTrack *track, jbyteArray buffer
     }
 
     jsize length = (*env)->GetArrayLength(env, buffer);
-    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write byte buffer [%u:%u]", length, 0);
-
     int retval = J4AC_AudioTrack__write(env, track->audioTrack, buffer, 0, length);
     if (J4A_ExceptionCheck__catchAll(env))
         SDL_LogError(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write byte buffer error");
@@ -217,8 +215,6 @@ void AudioTrack_WriteShortBuffer(SDL_Android_AudioTrack *track, jshortArray buff
     }
 
     jsize length = (*env)->GetArrayLength(env, buffer);
-    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write short buffer [%u:%u]", length, 0);
-
     int retval = J4AC_AudioTrack__write_short(env, track->audioTrack, buffer, 0, length);
     if (J4A_ExceptionCheck__catchAll(env))
         SDL_LogError(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write byte short error");
@@ -235,9 +231,7 @@ void AudioTrack_WriteFloatBuffer(SDL_Android_AudioTrack *track, jfloatArray buff
     }
 
     jsize length = (*env)->GetArrayLength(env, buffer);
-    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write float buffer [%u:%u]", length, 0);
-
-    int retval = J4AC_AudioTrack__write_float(env, track->audioTrack, buffer, 0, length, 0);
+    int retval = J4AC_AudioTrack__write_float(env, track->audioTrack, buffer, 0, length, WRITE_BLOCKING);
     if (J4A_ExceptionCheck__catchAll(env))
         SDL_LogError(SDL_LOG_CATEGORY_AUDIO, "SDL audio: audio track write float buffer error");
 

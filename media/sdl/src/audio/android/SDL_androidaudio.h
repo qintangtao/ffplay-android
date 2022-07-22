@@ -10,8 +10,6 @@
 
 struct SDL_PrivateAudioData
 {
-    int resume;
-
     SDL_Android_AudioTrack *audioTrack;
 
     int audioBufferFormat;
@@ -20,7 +18,6 @@ struct SDL_PrivateAudioData
 
     int captureBufferFormat;
     jobject captureBuffer;
-
 };
 
 
