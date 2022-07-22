@@ -97,6 +97,21 @@ Android_JNI_CreateKey_once(void)
     }
 }
 
+void Android_JNI_AudioSetThreadPriority(int iscapture, int device_id)
+{
+    JNIEnv *env = Android_JNI_GetEnv();
+
+    /* Set thread name
+                if (iscapture) {
+                    Thread.currentThread().setName("SDLAudioC" + device_id);
+                } else {
+                    Thread.currentThread().setName("SDLAudioP" + device_id);
+                }
+                */
+    //android.os.Process.THREAD_PRIORITY_AUDIO
+    J4AC_Process__setThreadPriority__catchAll(env, -16);
+}
+
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved)
 {
     mJavaVM = vm;
@@ -112,6 +127,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved)
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed J4A_LoadAll__catchAll");
         return JNI_VERSION_1_6;
     }
+
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "J4A_LoadAll__catchAll okay");
 
     Android_JNI_CreateKey_once();
 

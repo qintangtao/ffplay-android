@@ -20,7 +20,7 @@
 
 APP_OPTIM := release
 APP_PLATFORM := android-29
-APP_ABI := arm64-v8a armeabi-v7a 
+APP_ABI := arm64-v8a armeabi-v7a x86 x86_64
 NDK_TOOLCHAIN_VERSION=4.9
 APP_PIE := false
 

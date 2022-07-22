@@ -7,6 +7,7 @@
     J4A_LOAD_CLASS(android_media_PlaybackParams);
     J4A_LOAD_CLASS(android_os_Build);
     J4A_LOAD_CLASS(android_os_Bundle);
-    J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_misc_IMediaDataSource);
-    J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_misc_IAndroidIO);
-    J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_IjkMediaPlayer);
+    J4A_LOAD_CLASS(android_os_Process);
+    //J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_misc_IMediaDataSource);
+    //J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_misc_IAndroidIO);
+    //J4A_LOAD_CLASS(tv_danmaku_ijk_media_player_IjkMediaPlayer);

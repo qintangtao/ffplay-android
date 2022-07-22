@@ -282,7 +282,8 @@ SDL_LogOutput(void *userdata, int category, SDL_LogPriority priority,
 #if defined(__ANDROID__)
     {
         char tag[32];
-        SDL_snprintf(tag, SDL_arraysize(tag), "SDL/%s", GetCategoryPrefix(category));
+        //SDL_snprintf(tag, SDL_arraysize(tag), "SDL/%s", GetCategoryPrefix(category));
+        SDL_snprintf(tag, SDL_arraysize(tag), "SDL2");
         __android_log_write(SDL_android_priority[priority], tag, message);
     }
 #endif

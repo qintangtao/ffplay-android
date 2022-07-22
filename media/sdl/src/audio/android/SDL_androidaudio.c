@@ -15,8 +15,11 @@ ANDROIDAUDIO_OpenDevice(_THIS, void *handle, const char *devname, int iscapture)
 {
     SDL_AudioFormat test_format;
 
-    SDL_assert((captureDevice == NULL) || !iscapture);
-    SDL_assert((audioDevice == NULL) || iscapture);
+
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice 1");
+
+    //SDL_assert((captureDevice == NULL) || !iscapture);
+    //SDL_assert((audioDevice == NULL) || iscapture);
 
     if (iscapture) {
         captureDevice = this;
@@ -29,6 +32,7 @@ ANDROIDAUDIO_OpenDevice(_THIS, void *handle, const char *devname, int iscapture)
         return SDL_OutOfMemory();
     }
 
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice 2");
     this->hidden->audioTrack = 0;
     this->hidden->audioBufferFormat = 0;
     this->hidden->audioBuffer = NULL;
@@ -47,16 +51,20 @@ ANDROIDAUDIO_OpenDevice(_THIS, void *handle, const char *devname, int iscapture)
         test_format = SDL_NextAudioFormat();
     }
 
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice 3");
     if (test_format == 0) {
         return SDL_SetError("No compatible audio format!");
     }
 
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice 4");
     if (Android_JNI_OpenAudioDevice(iscapture, &this->spec, this->hidden) < 0) {
         return -1;
     }
 
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice 5");
     SDL_CalculateAudioSpec(&this->spec);
 
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_OpenDevice okay");
     return 0;
 }
 
@@ -64,6 +72,8 @@ static void
 ANDROIDAUDIO_PlayDevice(_THIS)
 {
     Android_JNI_WriteAudioBuffer(this->hidden);
+
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_PlayDevice okay");
 }
 
 static Uint8 *
@@ -84,6 +94,8 @@ ANDROIDAUDIO_CloseDevice(_THIS)
         audioDevice = NULL;
     }
     SDL_free(this->hidden);
+
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_CloseDevice okay");
 }
 
 static int
@@ -98,10 +110,13 @@ ANDROIDAUDIO_Init(SDL_AudioDriverImpl * impl)
     //impl->FlushCapture = ANDROIDAUDIO_FlushCapture;
 
     /* and the capabilities */
-    impl->HasCaptureSupport = SDL_TRUE;
+    //impl->HasCaptureSupport = SDL_TRUE;
+    impl->HasCaptureSupport = SDL_FALSE;
     impl->OnlyHasDefaultOutputDevice = 1;
     impl->OnlyHasDefaultCaptureDevice = 1;
 
+
+    SDL_LogVerbose(SDL_LOG_CATEGORY_AUDIO, "ANDROIDAUDIO_Init okay");
     return 1;   /* this audio target is available. */
 }
 

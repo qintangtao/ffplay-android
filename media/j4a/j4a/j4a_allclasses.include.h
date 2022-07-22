@@ -7,6 +7,7 @@
 #include "class/android/media/PlaybackParams.h"
 #include "class/android/os/Build.h"
 #include "class/android/os/Bundle.h"
+#include "class/android/os/Process.h"
 #include "class/tv/danmaku/ijk/media/player/misc/IMediaDataSource.h"
 #include "class/tv/danmaku/ijk/media/player/misc/IAndroidIO.h"
 #include "class/tv/danmaku/ijk/media/player/IjkMediaPlayer.h"

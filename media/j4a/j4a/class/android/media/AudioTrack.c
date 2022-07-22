@@ -35,6 +35,8 @@ typedef struct J4AC_android_media_AudioTrack {
     jmethodID method_flush;
     jmethodID method_release;
     jmethodID method_write;
+    jmethodID method_write_short;
+    jmethodID method_write_float;
     jmethodID method_setStereoVolume;
     jmethodID method_getAudioSessionId;
     jmethodID method_getPlaybackParams;
@@ -207,6 +209,34 @@ jint J4AC_android_media_AudioTrack__write(JNIEnv *env, jobject thiz, jbyteArray 
 jint J4AC_android_media_AudioTrack__write__catchAll(JNIEnv *env, jobject thiz, jbyteArray audioData, jint offsetInBytes, jint sizeInBytes)
 {
     jint ret_value = J4AC_android_media_AudioTrack__write(env, thiz, audioData, offsetInBytes, sizeInBytes);
+    if (J4A_ExceptionCheck__catchAll(env)) {
+        return 0;
+    }
+
+    return ret_value;
+}
+
+jint J4AC_android_media_AudioTrack__write_short(JNIEnv *env, jobject thiz, jshortArray audioData, jint offsetInBytes, jint sizeInBytes)
+{
+    return (*env)->CallIntMethod(env, thiz, class_J4AC_android_media_AudioTrack.method_write_short, audioData, offsetInBytes, sizeInBytes);
+}
+jint J4AC_android_media_AudioTrack__write_short__catchAll(JNIEnv *env, jobject thiz, jshortArray audioData, jint offsetInBytes, jint sizeInBytes)
+{
+    jint ret_value = J4AC_android_media_AudioTrack__write_short(env, thiz, audioData, offsetInBytes, sizeInBytes);
+    if (J4A_ExceptionCheck__catchAll(env)) {
+        return 0;
+    }
+
+    return ret_value;
+}
+
+jint J4AC_android_media_AudioTrack__write_float(JNIEnv *env, jobject thiz, jfloatArray audioData, jint offsetInBytes, jint sizeInBytes, jint writeMode)
+{
+    return (*env)->CallIntMethod(env, thiz, class_J4AC_android_media_AudioTrack.method_write_float, audioData, offsetInBytes, sizeInBytes, writeMode);
+}
+jint J4AC_android_media_AudioTrack__write_float__catchAll(JNIEnv *env, jobject thiz, jfloatArray audioData, jint offsetInBytes, jint sizeInBytes, jint writeMode)
+{
+    jint ret_value = J4AC_android_media_AudioTrack__write_float(env, thiz, audioData, offsetInBytes, sizeInBytes, writeMode);
     if (J4A_ExceptionCheck__catchAll(env)) {
         return 0;
     }
@@ -484,6 +514,20 @@ int J4A_loadClass__J4AC_android_media_AudioTrack(JNIEnv *env)
     sign     = "([BII)I";
     class_J4AC_android_media_AudioTrack.method_write = J4A_GetMethodID__catchAll(env, class_id, name, sign);
     if (class_J4AC_android_media_AudioTrack.method_write == NULL)
+        goto fail;
+
+    class_id = class_J4AC_android_media_AudioTrack.id;
+    name     = "write";
+    sign     = "([SII)I";
+    class_J4AC_android_media_AudioTrack.method_write_short = J4A_GetMethodID__catchAll(env, class_id, name, sign);
+    if (class_J4AC_android_media_AudioTrack.method_write_short == NULL)
+        goto fail;
+
+    class_id = class_J4AC_android_media_AudioTrack.id;
+    name     = "write";
+    sign     = "([FIII)I";
+    class_J4AC_android_media_AudioTrack.method_write_float = J4A_GetMethodID__catchAll(env, class_id, name, sign);
+    if (class_J4AC_android_media_AudioTrack.method_write_float == NULL)
         goto fail;
 
     class_id = class_J4AC_android_media_AudioTrack.id;

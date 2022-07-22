@@ -45,8 +45,16 @@ void J4AC_android_media_AudioTrack__flush(JNIEnv *env, jobject thiz);
 void J4AC_android_media_AudioTrack__flush__catchAll(JNIEnv *env, jobject thiz);
 void J4AC_android_media_AudioTrack__release(JNIEnv *env, jobject thiz);
 void J4AC_android_media_AudioTrack__release__catchAll(JNIEnv *env, jobject thiz);
+
 jint J4AC_android_media_AudioTrack__write(JNIEnv *env, jobject thiz, jbyteArray audioData, jint offsetInBytes, jint sizeInBytes);
 jint J4AC_android_media_AudioTrack__write__catchAll(JNIEnv *env, jobject thiz, jbyteArray audioData, jint offsetInBytes, jint sizeInBytes);
+
+jint J4AC_android_media_AudioTrack__write_short(JNIEnv *env, jobject thiz, jshortArray audioData, jint offsetInBytes, jint sizeInBytes);
+jint J4AC_android_media_AudioTrack__write_short__catchAll(JNIEnv *env, jobject thiz, jshortArray audioData, jint offsetInBytes, jint sizeInBytes);
+
+jint J4AC_android_media_AudioTrack__write_float(JNIEnv *env, jobject thiz, jfloatArray audioData, jint offsetInBytes, jint sizeInBytes, jint writeMode);
+jint J4AC_android_media_AudioTrack__write_float__catchAll(JNIEnv *env, jobject thiz, jfloatArray audioData, jint offsetInBytes, jint sizeInBytes, jint writeMode);
+
 jint J4AC_android_media_AudioTrack__setStereoVolume(JNIEnv *env, jobject thiz, jfloat leftGain, jfloat rightGain);
 jint J4AC_android_media_AudioTrack__setStereoVolume__catchAll(JNIEnv *env, jobject thiz, jfloat leftGain, jfloat rightGain);
 jint J4AC_android_media_AudioTrack__getAudioSessionId(JNIEnv *env, jobject thiz);
@@ -97,6 +105,13 @@ int J4A_loadClass__J4AC_android_media_AudioTrack(JNIEnv *env);
 #define J4AC_AudioTrack__release__catchAll J4AC_android_media_AudioTrack__release__catchAll
 #define J4AC_AudioTrack__write J4AC_android_media_AudioTrack__write
 #define J4AC_AudioTrack__write__catchAll J4AC_android_media_AudioTrack__write__catchAll
+
+#define J4AC_AudioTrack__write_short J4AC_android_media_AudioTrack__write_short
+#define J4AC_AudioTrack__write_short__catchAll J4AC_android_media_AudioTrack__write_short__catchAll
+
+#define J4AC_AudioTrack__write_float J4AC_android_media_AudioTrack__write_float
+#define J4AC_AudioTrack__write_float__catchAll J4AC_android_media_AudioTrack__write_float__catchAll
+
 #define J4AC_AudioTrack__setStereoVolume J4AC_android_media_AudioTrack__setStereoVolume
 #define J4AC_AudioTrack__setStereoVolume__catchAll J4AC_android_media_AudioTrack__setStereoVolume__catchAll
 #define J4AC_AudioTrack__getAudioSessionId J4AC_android_media_AudioTrack__getAudioSessionId

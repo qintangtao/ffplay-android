@@ -8,7 +8,6 @@ int Android_JNI_OpenAudioDevice(int iscapture, SDL_AudioSpec *spec, struct SDL_P
     int audioformat;
     jobject jbufobj = NULL;
     jboolean isCopy;
-    int result;
     SDL_Android_AudioTrack *track;
 
     JNIEnv *env = Android_JNI_GetEnv();
@@ -60,7 +59,6 @@ int Android_JNI_OpenAudioDevice(int iscapture, SDL_AudioSpec *spec, struct SDL_P
     spec->freq = AudioTrack_sampleRate(track);
     spec->channels = AudioTrack_channelCount(track);
     spec->samples = AudioTrack_desiredFrames(track);
-
 
     switch(audioformat) {
     case ENCODING_PCM_8BIT:
