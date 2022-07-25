@@ -20,7 +20,7 @@ LOCAL_PATH := $(call my-dir)
 
 ###########################
 #
-# SDL shared library
+# player shared library
 #
 ###########################
 
@@ -29,21 +29,17 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := player
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
+LOCAL_C_INCLUDES += $(FFMPEG_INCLUDE_PATH)
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
 
 LOCAL_SRC_FILES := \
 	$(wildcard $(LOCAL_PATH)/src/*.c) \
-	$(wildcard $(LOCAL_PATH)/src/audio/*.c) \
-	$(wildcard $(LOCAL_PATH)/src/audio/android/*.c) \
-	$(wildcard $(LOCAL_PATH)/src/audio/openslES/*.c) \
-	$(wildcard $(LOCAL_PATH)/src/core/android/*.c)
-
+	$(wildcard $(LOCAL_PATH)/src/decoder/*.c)
 
 
 LOCAL_LDLIBS += -llog -landroid
-
-LOCAL_SHARED_LIBRARIES := ffmpeg sdl
+LOCAL_SHARED_LIBRARIES := sdl avcodec avdevice avfilter avformat avutil swresample swscale
 
 include $(BUILD_SHARED_LIBRARY)
 
