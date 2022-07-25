@@ -16,11 +16,11 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with ijkPlayer; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-# x86 x86_64 arm64-v8a armeabi-v7a 
+# x86 x86_64 arm64-v8a armeabi-v7a   armeabi-v7a x86 x86_64
 
 APP_OPTIM := release
 APP_PLATFORM := android-29
-APP_ABI := arm64-v8a armeabi-v7a x86 x86_64
+APP_ABI := arm64-v8a
 NDK_TOOLCHAIN_VERSION=4.9
 APP_PIE := false
 

@@ -1,5 +1,4 @@
-# Copyright (c) 2013 Bilibili
-# copyright (c) 2013 Zhang Rui <bbcallen@gmail.com>
+# copyright (c) 2016 Zhang Rui <bbcallen@gmail.com>
 #
 # This file is part of ijkPlayer.
 #
@@ -19,9 +18,4 @@
 
 LOCAL_PATH := $(call my-dir)
 
-FFMPEG_PATH := $(realpath $(LOCAL_PATH)/../ffmpeg)
-FFMPEG_LIB_PATH := $(realpath $(FFMPEG_PATH)/libs)/$(TARGET_ARCH_ABI)
-FFMPEG_INCLUDE_PATH := $(realpath $(FFMPEG_PATH)/include)
-
-
-include $(call all-subdir-makefiles)
+include $(LOCAL_PATH)/../../media/Android.mk
