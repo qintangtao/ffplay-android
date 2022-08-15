@@ -40,7 +40,6 @@ extern void decoder_destroy(Decoder *d);
 
 extern int decoder_decode_frame(FFPlayer *ffp, Decoder *d, AVFrame *frame, AVSubtitle *sub);
 
-
 extern int audio_thread(void *arg);
 
 extern int video_thread(void *arg);

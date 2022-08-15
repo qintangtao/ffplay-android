@@ -11,7 +11,6 @@
 #define EXTERNAL_CLOCK_SPEED_STEP 0.001
 
 
-struct VideoState;
 typedef struct VideoState VideoState;
 
 typedef struct Clock {

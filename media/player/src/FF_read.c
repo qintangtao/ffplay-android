@@ -39,8 +39,7 @@ int read_thread(void *arg)
 {
     FFPlayer *ffp = arg;
     VideoState *is = ffp->is;
-
-     AVFormatContext *ic = NULL;
+    AVFormatContext *ic = NULL;
     int err, i, ret;
     int st_index[AVMEDIA_TYPE_NB];
     AVPacket *pkt = NULL;

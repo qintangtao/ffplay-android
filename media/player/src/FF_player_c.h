@@ -2,7 +2,9 @@
 #define FF_player_c_h_
 
 #include <stdint.h>
+
 #include "libavutil/avutil.h"
+
 #include "FF_common_c.h"
 
 #define AV_NOSYNC_THRESHOLD 10.0
@@ -52,8 +54,7 @@ typedef struct FFPlayer {
 	int autoexit; // = 1
 	int infinite_buffer;// = -1;
 
-	//enum ShowMode show_mode;// = SHOW_MODE_NONE;
-	enum ShowMode show_mode;
+	enum ShowMode show_mode; // = SHOW_MODE_NONE;
 	int audio_disable;
 	int video_disable;
 	int subtitle_disable;

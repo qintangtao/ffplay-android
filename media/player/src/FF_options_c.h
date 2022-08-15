@@ -104,6 +104,7 @@ static const AVOption FF_options[] = {
 };
 
 
+#undef OPTION_BOOL
 #undef OPTION_STR
 #undef OPTION_CONST
 #undef OPTION_INT
